@@ -1,0 +1,105 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Cucumber-JVM Sceneric Feature Tests 1.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sceneric-features ---
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/yevgrima/Automation/BrowserStack_Parallel/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ sceneric-features ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sceneric-features ---
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 14 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:testCompile (default-testCompile) @ sceneric-features ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ sceneric-features ---
+[INFO] Surefire report directory: /Users/yevgrima/Automation/BrowserStack_Parallel/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.sceneric.goodyear.steps.StepsRunnerTest
+Using base URL: https://digitas:r3v1ew@test.goodyear.com/?us
+Number of java processes running: 7
+Starting UnLock thread
+Starting Monitor thread
+Current directory is /Users/yevgrima/Automation/BrowserStack_Parallel
+
+
+Starting test on browser: firefox , operating system: linux, and environment: local and local environment: test
+The test is running on base url: https://digitas:r3v1ew@test.goodyear.com/?us
+
+There are 7 java processes running
+
+
+There are 0 Firefox processes running
+
+Performing mouse movements to prevent local machine from locking on 2015-10-06 14:03:55.279
+No Exception occured, while trying to launch web driver
+Starting test on browser: firefox
+Attempting to click on FIND TIRES link
+Clicked on link: 2015
+Clicking on BY VEHICLE
+Clicking on element by linkText: Acura
+Clicking on element by linkText: ILX
+Clicking on element by linkText: Standard
+Clicking on element by xpath: //form[@id='tire-selector-form-vehicle']/div/div/div/div/div/span/input
+Clearing element by xpath: //form[@id='tire-selector-form-vehicle']/div/div/div/div/div/span/input
+Typing 01907 into element by xpath: //form[@id='tire-selector-form-vehicle']/div/div/div/div/div/span/input
+Clicking on first available tire size choice on attempt number 1
+label=Tires That Fit Your Acura ILX
+Comparing text from element by css: div.result-title > span with expected value: 2015 Acura ILX Standard
+Comparing that text from element by css: div.free-delivery-msg > p matches regular expression: Free delivery to your installer.*
+Comparing that text from element by css: p.closest-installer matches regular expression: CLOSEST INSTALLER.*
+Comparing that text from element by css: div.temp-unavailable.no-available-to-purchase > p matches regular expression: Temporarily unavailable for online purchase, but you can still shop at a store near you.*
+Clicking on element by linkText: TIRES
+Clicking on element by css: p.dropdown-tile-title
+Clicking on element by xpath: //a[contains(text(),'SEE TIRE RESULTS')]
+label=Tires That Fit Your Acura ILX
+Comparing text from element by css: div.result-title > span with expected value: 2015 Acura ILX Standard
+Comparing that text from element by css: div.free-delivery-msg > p matches regular expression: Free delivery to your installer.*
+Comparing that text from element by css: p.closest-installer matches regular expression: CLOSEST INSTALLER.*
+Comparing that text from element by css: div.temp-unavailable.no-available-to-purchase > p matches regular expression: Temporarily unavailable for online purchase, but you can still shop at a store near you.*
+
+Ending test on browser: firefox, operating system: linux, and environment: local
+Goodyear.ignoreErrors: 
+Goodyear_eCommerce.ignoreAddToCartButton: 
+Closing and quiting webdriver
+Number of java processes running: 7
+Current directory is /Users/yevgrima/Automation/BrowserStack_Parallel
+
+
+Starting test on browser: firefox , operating system: linux, and environment: local and local environment: test
+The test is running on base url: https://digitas:r3v1ew@test.goodyear.com/?us
+No Exception occured, while trying to launch web driver
+Starting test on browser: firefox
+Attempting to click on FIND TIRES link
+
+There are 7 java processes running
+
+
+There are 1 Firefox processes running
+
+Performing mouse movements to prevent local machine from locking on 2015-10-06 14:07:21.426
+Clicked on link: 2014
+Clicking on BY VEHICLE
+Clicking on element by linkText: Audi
+Clicking on element by linkText: S5
+Clicking on element by linkText: Premium Plus Coupe
+Clicking on element by xpath: //form[@id='tire-selector-form-vehicle']/div/div/div/div/div/span/input
+Clearing element by xpath: //form[@id='tire-selector-form-vehicle']/div/div/div/div/div/span/input
+Typing 01902 into element by xpath: //form[@id='tire-selector-form-vehicle']/div/div/div/div/div/span/input
+Clicking on first available tire size choice on attempt number 1
+label=Tires That Fit Your Audi S5
+Comparing text from element by css: div.result-title > span with expected value: 2014 Audi S5 Premium Plus Coupe
+Comparing that text from element by css: div.free-delivery-msg > p matches regular expression: Free delivery to your installer.*
+Comparing that text from element by css: p.closest-installer matches regular expression: CLOSEST INSTALLER.*
+Comparing that text from element by css: div.temp-unavailable.no-available-to-purchase > p matches regular expression: Temporarily unavailable for online purchase, but you can still shop at a store near you.*
+Clicking on element by linkText: TIRES
+Clicking on element by css: p.dropdown-tile-title

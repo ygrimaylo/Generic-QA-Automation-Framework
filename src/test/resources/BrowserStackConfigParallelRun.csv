@@ -1,0 +1,4 @@
+browser_device|browser_device_version|os|os_version|screen_resolution|device|tags|url
+Chrome|40|OS X|Yosemite|1024x768|Samsung Galaxy S5|@PlacesterWeb|http://staging:welcome@www.myrealestateplatform.org/admin/?#login
+Firefox|40|OS X|Yosemite|1024x768|Samsung Galaxy S5|@PlacesterWeb|http://staging:welcome@www.myrealestateplatform.org/admin/?#login
+Safari|9|OS X|Yosemite|1024x768|Samsung Galaxy S5|@PlacesterWeb|http://staging:welcome@www.myrealestateplatform.org/admin/?#login
