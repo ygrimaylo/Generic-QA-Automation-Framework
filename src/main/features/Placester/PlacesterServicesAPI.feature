@@ -156,7 +156,7 @@ Examples:
 @Placester_Services_API_Account_ConvertCsvToJson
 Scenario: Testing placester restful services api, related to conversion of csv to json
 
-   And I convert csv to json and validate response code 200
+   And I convert csv to json and validate response code 200   
 
 @Placester_Services_API_Billing_Account_Create
 Scenario Outline: Testing placester restful services api, related to billing account
@@ -169,30 +169,25 @@ Scenario Outline: Testing placester restful services api, related to billing acc
       
 Examples:
     | account_id                           | account_email       | first_name  | last_name  | company_name | city     | address1         | address2        | country | phone        | state  | zip   |
-    | 76ca2fe4-d7fc-4d74-acbc-bd019c7c70a6 | test10@test.tv      | QAFirstName | QALastName | Placester    | Boston   | 123 Street       | unit 2          | US      | 555-555-5555 | MA     | 02210 |   
-
-@Placester_Services_API_Account_Session
-Scenario Outline: Testing placester restful services api, related to account session
-   And I create account session by account_email for account_id <account_id> with account_email <account_email> and validate response code 200
-   And I create account session by account_id for account_id <account_id> with account_email <account_email> and validate response code 200
-   And I create account session by verbose for account_id <account_id> with account_email <account_email> and validate response code 200
-   And I read account session by id for account_id <account_id> and validate response code 200 and response text <account_id>
-   And I read account session by account_id for account_id <account_id> and validate response code 200 and response text <account_id>
-   And I read account session by verbose for account_id <account_id> and validate response code 200 and response text <account_email>
-   And I delete account_session by id with account_id <account_id> and validate response code 204 and response text is blank
-   And I delete account_session by account_id with account_id <account_id> and validate response code 204 and response text is blank
-      
-Examples:
-    | account_id                           | account_email       |
-    | 76ca2fe4-d7fc-4d74-acbc-bd019c7c70a6 | test10@test.tv      | 
+    | 76ca2fe4-d7fc-4d74-acbc-bd019c7c70a6 | test10@test.tv      | QAFirstName | QALastName | Placester    | Boston   | 123 Street       | unit 2          | US      | 555-555-5555 | MA     | 02210 |
 
 @Placester_Services_API_Billing_Coupon
 Scenario Outline: Testing placester restful services api, related to billing service coupon
 
    And I create billing coupon with coupon data <coupon_name>,<coupon_description>,<discount_percent>,<code_id>,<plan_id> and validate response code 200
+   And I read billing coupon and validate response code 200 and response text <coupon_name>,<coupon_description>,<discount_percent>,<code_id>,<plan_id>
+   And I delete billing_coupon and validate response code 204 and response text is blank
 
 Examples:
     | coupon_name     | plan_id                              | code_id    | discount_percent | coupon_description |
-    | One time coupon | 0045276f-a80d-45ce-8d8a-bf53b33603f2 | QATestCode | 40               | One Time Coupon    ||
+    | One time coupon | 0045276f-a80d-45ce-8d8a-bf53b33603f2 | QATestCode | 40               | One Time Coupon    |
 
-     
+@Placester_Services_API_BillingInfo_Create
+Scenario Outline: Testing placester restful services api, related to billing info
+
+   And I create billing info for billing id <billing_id> with expired token <token_id> and validate response code 500 and response text Token is either invalid or expired
+   And I read billing info and validate response code 200 and response text <billing_id>
+
+Examples:
+    | billing_id                           | token_id               | 
+    | 88fd8b15-70e3-48c2-8f67-9c81608faa06 | 9Uqhn0tjWRxLhuY78u_Ozg |

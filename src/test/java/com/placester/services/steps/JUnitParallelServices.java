@@ -32,10 +32,6 @@ import com.placester.web.steps.PlacesterSupport;
 			System.out.print("Environment is " + environment_global + "\n");
 			//Get number of records in config file
 			int rows = obj.getBrowserStackConfigRows("BrowserStackConfigParallelRun.csv");
-			if(rows > 100) {
-				System.out.print("You can not define more than 100 parallel browserstack sessions, due to digitas browserstack license agreement, so setting number of parallel browserstack threads to 10\n");
-				rows = 100;
-			}
 			number_of_records_in_config_file = rows;
 			System.out.print("Number of records in BrowserStackConfigParallelRun.csv is " + rows + "\n");
 			for(int x = 1; x <= rows; x++) {
@@ -65,18 +61,6 @@ import com.placester.web.steps.PlacesterSupport;
 				device = ConfigArray[5].trim();
 				tag = ConfigArray[6].trim();
 				url = ConfigArray[7].trim();
-				if(url.contains("dev") && !url.contains("dev2"))
-		    		env = "dev";
-		    	else if(url.contains("test") && !url.contains("test1"))
-		    		env = "test";
-		    	else if(url.contains("local"))
-		    		env = "local";
-		    	else if(url.contains("test1"))
-		    		env = "test1";
-		    	else if(url.contains("dev2"))
-		    		env = "dev2";
-		    	else
-		    		env = "prod";
 				System.out.print("Execution tags: " + tag + "\n");
 				for(int z = 1; z <= 10; z++) {
 					System.out.print("Trying to create configuration file: " + filename + " with attempt number " + z + "\n");
@@ -119,18 +103,13 @@ import com.placester.web.steps.PlacesterSupport;
 								e1.printStackTrace();
 							}
 							writer.println("#!/bin/sh");
-							if(environment_global.contains("browserstack"))
-								writer.println("/usr/bin/apache-maven-3.2.5/bin/mvn verify -Dwebdriver.driver=" + brs.toLowerCase() + " -Dwebdriver.safari.install=false -Dwebdriver.base.url=" + url + " -Dcuke.placester.env=browserstack_parallel -Dunlock.setting.value=" + y + " -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\" >TestResults/TestReport_" + brs + ver + "_" + env + "_thread" + y);
-							else if(environment_global.contains("local") && number_of_records_in_config_file <= 3)
-								writer.println("/usr/bin/apache-maven-3.2.5/bin/mvn verify -Dwebdriver.driver=" + brs.toLowerCase() + " -Dwebdriver.safari.install=false -Dwebdriver.base.url=" + url + " -Dcuke.placester.env=local -Dunlock.setting.value=yes -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\" >TestResults/TestReport_" + brs + ver + "_" + env + "_thread" + y);
-							else if(environment_global.contains("local") && number_of_records_in_config_file > 3)
-								writer.println("/usr/bin/apache-maven-3.2.5/bin/mvn verify -Dwebdriver.driver=" + brs.toLowerCase() + " -Dwebdriver.safari.install=false -Dwebdriver.base.url=" + url + " -Dcuke.placester.env=local -Dunlock.setting.value=no -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\" >TestResults/TestReport_" + brs + ver + "_" + env + "_thread" + y);
+							writer.println("/usr/bin/apache-maven-3.2.5/bin/mvn verify -Dwebdriver.base.url=" + url + " -Dunlock.setting.value=" + y + " -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\" >TestResults/TestReport_thread" + y);
 							writer.close();
 						}
 						if(os.equalsIgnoreCase("windows") && environment_global.contains("browserstack"))
-							cmd = "cmd /c start mvn verify test -Dwebdriver.driver=" + brs + " -Dwebdriver.safari.install=false -Dwebdriver.base.url=" + url + " -Dcuke.placester.env=browserstack_parallel -Dunlock.setting.value=" + y + " -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\"";
+							cmd = "cmd /c start mvn verify test -Dwebdriver.base.url=" + url + " -Dunlock.setting.value=" + y + " -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\"";
 						else if(os.equalsIgnoreCase("windows") && environment_global.contains("local"))
-							cmd = "cmd /c start mvn verify test -Dwebdriver.driver=" + brs + " -Dwebdriver.safari.install=false -Dwebdriver.base.url=" + url + " -Dcuke.placester.env=local -Dunlock.setting.value=" + y + " -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\"";
+							cmd = "cmd /c start mvn verify test -Dwebdriver.base.url=" + url + " -Dunlock.setting.value=" + y + " -Dcucumber.options=\"--glue classpath:com/placester/services/steps src/main/features --tags " + tag + " --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport\"";
 						else {
 							cmd = "chmod u+x " + currentDir + "/CommandLine.sh";
 						}

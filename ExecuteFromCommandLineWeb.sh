@@ -44,7 +44,7 @@ elif (( $i%17 == 0 )); then
 fi
 report=TestReport_"$i"_"$browser"_"$env"
 echo "Running test suite iteration $i for browser: $browser, env: $env and url: $url"
-mvn clean verify test -Dwebdriver.driver=$browser -Dwebdriver.safari.install=false -Dwebdriver.base.url=$url -Dcuke.sceneric.env=$env -Dunlock.setting.value=yes -Dcucumber.options="--glue classpath:com/placester/web/steps src/main/features --tags @PlacesterWeb --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport" >$report
+mvn clean verify test -Dwebdriver.driver=$browser -Dwebdriver.safari.install=false -Dwebdriver.base.url=$url -Dcuke.placester.env=$env -Dunlock.setting.value=yes -Dcucumber.options="--glue classpath:com/placester/web/steps src/main/features --tags @PlacesterWeb --format json-pretty:target/cucumber-report-myReport.json --format html:target/cucumber-html-report-myReport" >$report
 kill -9 `ps -ef | grep "$process" | grep -v grep | awk '{print $2}'`
 done
 kill -9 `ps -ef | grep ExecuteFromCommandLineAll.sh | grep -v grep | awk '{print $2}'`
