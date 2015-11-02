@@ -34,6 +34,9 @@ public class Address {
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         String[] address_parts = account_address_data.trim().split(",");
         for(int x = 0; x < address_parts.length; x++) {
             if(x == 0) {
@@ -142,6 +145,9 @@ public class Address {
         StringBuffer response = new StringBuffer();
         String id = "", region = "", primary_address = "", postal_code = "", locality = "", address1 = "", address2 = "", country_code = "", group_id = "";
         int responseCode = 0, counter = 0;
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }
@@ -247,6 +253,9 @@ public class Address {
         int counter = 0, responseCode = 0;
         StringBuffer response = null;
         String id = "", region = "", primary_address = "", postal_code = "", locality = "", address1 = "", address2 = "", country_code = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }
@@ -327,6 +336,9 @@ public class Address {
         int counter = 0;
         StringBuffer response = null;
         String id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }

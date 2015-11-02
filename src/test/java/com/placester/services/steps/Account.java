@@ -31,6 +31,9 @@ public class Account {
         StringBuffer response = new StringBuffer();
         int responseCode = 0, counter = 0;
         String exp_response_text = "That email already exists";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/account/create");
             String authString = username + ":" + pwd;
@@ -100,6 +103,9 @@ public class Account {
     public void updateAccount(String account_id, String exp_response_code, String exp_response_text) {
         StringBuffer response = null;
         int responseCode = 0, counter = 0;
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(accountID.toString())) {
             account_id = accountID.toString(); 
         }
@@ -172,6 +178,9 @@ public class Account {
         if(!"".equals(accountID.toString())) {
             account_id = accountID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             if(read_type.equalsIgnoreCase("account id")) {
                 url = new URL(baseUrl + "/accounts/v1.5/account/read?id[]=" + account_id);
@@ -230,6 +239,9 @@ public class Account {
         StringBuffer response = null;
         if(!"".equals(accountID.toString())) {
             account_id = accountID.toString(); 
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
         }
         try {
             url = new URL(baseUrl + "/accounts/v1.5/account/delete?id[]=" + account_id);

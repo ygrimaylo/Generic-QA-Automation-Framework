@@ -26,6 +26,9 @@ public class Group {
         String group_type = "", group_name = "", region = "", primary_address = "", postal_code = "", locality = "", address1 = "", address2 = "", country_code = "", phone = "";
         int responseCode = 0, counter = 0;
         String[] group_parts = account_group_data.trim().split(",");
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         for(int x = 0; x < group_parts.length; x++) {
             if(x == 0) {
                 region = group_parts[x];
@@ -134,6 +137,9 @@ public class Group {
         int counter = 0;
         StringBuffer response = null;
         String id = "", group_type = "", group_name = "", region = "", primary_address = "", postal_code = "", locality = "", address1 = "", address2 = "", country_code = "", phone = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
@@ -239,6 +245,9 @@ public class Group {
         StringBuffer response = new StringBuffer();
         String id = "";
         int responseCode = 0, counter = 0;
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }
@@ -311,6 +320,9 @@ public class Group {
         String id = "";
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
         }
         try {
             url = new URL(baseUrl + "/accounts/v1.5/group/delete?id[]=" + id);

@@ -34,6 +34,9 @@ public class Media {
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/media/create");
             String line = "";
@@ -107,6 +110,9 @@ public class Media {
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/media/update");
             String line = "";
@@ -174,6 +180,9 @@ public class Media {
         int counter = 0, responseCode = 0;
         StringBuffer response = null;
         String id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
@@ -235,6 +244,9 @@ public class Media {
         String id = "";
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
         }
         try {
             url = new URL(baseUrl + "/accounts/v1.5/media/delete?id[]=" + id);

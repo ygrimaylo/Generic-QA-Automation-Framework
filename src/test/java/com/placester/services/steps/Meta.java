@@ -28,6 +28,9 @@ public class Meta {
         StringBuffer response = new StringBuffer();
         int responseCode = 0, counter = 0;
         String group_id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
@@ -102,6 +105,9 @@ public class Meta {
         int counter = 0, responseCode = 0;
         StringBuffer response = null;
         String id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
@@ -165,6 +171,9 @@ public class Meta {
         String id = "", group_id = "";
         String meta_updated_value = "meow updated";
         int responseCode = 0, counter = 0;
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }
@@ -241,6 +250,9 @@ public class Meta {
         int counter = 0;
         StringBuffer response = null;
         String id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }

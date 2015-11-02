@@ -6,9 +6,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import javax.annotation.Resource;
+
 import org.apache.commons.codec.binary.Base64;
+
 import com.placester.web.steps.PlacesterSupport;
+
 import cucumber.annotation.en.Given;
 
 public class AccountType {
@@ -26,6 +30,9 @@ public class AccountType {
         int responseCode = 0, counter = 0;
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
         }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/accounttype/create");
@@ -92,6 +99,9 @@ public class AccountType {
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/accounttype/update");
             String authString = Account.username + ":" + Account.pwd;
@@ -156,6 +166,9 @@ public class AccountType {
         URL url = null;
         int counter = 0, responseCode = 0;
         StringBuffer response = null;
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
@@ -207,7 +220,13 @@ public class AccountType {
         }
         //Capture account type id from the positive response
         if(responseCode == 200) {
-            ID.replace(0, ID.length(), response.toString().trim().substring(44, 80));
+            String[] response_parts = response.toString().trim().split(":");
+            for(int x = 0; x < response_parts.length; x++) {
+                if(x == 4) {
+                    System.out.print("response_parts[" + x + "]=" + response_parts[x] + "\n");
+                    ID.replace(0, ID.length(), response_parts[x].substring(1, 37));
+                }
+            }
             System.out.print("Captured id: " + ID.toString() + "\n");
         }
     }
@@ -217,6 +236,9 @@ public class AccountType {
         int responseCode = 0;
         int counter = 0;
         StringBuffer response = null;
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
            
             url = new URL(baseUrl + "/accounts/v1.5/accounttype/delete?id[]=" + ID);

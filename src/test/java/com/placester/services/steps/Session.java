@@ -27,6 +27,9 @@ public class Session {
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/session/create");
             String line = "";
@@ -123,6 +126,9 @@ public class Session {
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             if(session_type.equalsIgnoreCase("id")) {
                 url = new URL(baseUrl + "/accounts/v1.5/session/read?id=" + id);
@@ -196,6 +202,9 @@ public class Session {
         int counter = 0;
         StringBuffer response = null;
         String id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }

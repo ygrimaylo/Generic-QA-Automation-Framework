@@ -24,6 +24,9 @@ public class Csv {
         StringBuffer response = new StringBuffer();
         int responseCode = 0, counter = 0;
         String exp_response_text = "{\"header\":[\"a\",\"b\",\"c\"],\"rows\":[{\"b\":\"two\",\"c\":\"three\",\"a\":\"one\"},{\"b\":\"five\",\"c\":\"size\",\"a\":\"four\"}]}";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/csv");
             String line = "";

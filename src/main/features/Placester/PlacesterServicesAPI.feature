@@ -182,12 +182,24 @@ Examples:
     | coupon_name     | plan_id                              | code_id    | discount_percent | coupon_description |
     | One time coupon | 0045276f-a80d-45ce-8d8a-bf53b33603f2 | QATestCode | 40               | One Time Coupon    |
 
-@Placester_Services_API_BillingInfo_Create
+@Placester_Services_API_BillingInfo
 Scenario Outline: Testing placester restful services api, related to billing info
 
    And I create billing info for billing id <billing_id> with expired token <token_id> and validate response code 500 and response text Token is either invalid or expired
    And I read billing info and validate response code 200 and response text <billing_id>
+   And I update billing info for billing id <billing_id> with expired token <token_id> and validate response code 500 and response text Token is either invalid or expired
+   And I delete billing_info and validate response code 204 and response text is blank
 
 Examples:
     | billing_id                           | token_id               | 
     | 88fd8b15-70e3-48c2-8f67-9c81608faa06 | 9Uqhn0tjWRxLhuY78u_Ozg |
+
+@Placester_Services_API_Subscription
+Scenario Outline: Testing placester restful services api, related to subscription
+
+   And I create billing transaction for billing id <billing_id> with account_id <account_id> and subscription_id <subscription_id> and validate response code 200
+   And I read billing transaction and validate response code 200 and response text <billing_id>
+   
+Examples:
+    | billing_id                           | account_id                            | subscription_id                  |
+    | 0a092193-c56e-4218-8d9c-5f1ef5eb3d56 | 76ca2fe4-d7fc-4d74-acbc-bd019c7c70a6  | 3223b100df08816ff6d31c4ce6a2858b |

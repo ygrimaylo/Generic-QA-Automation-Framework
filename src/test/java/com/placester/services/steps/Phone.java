@@ -24,6 +24,9 @@ public class Phone {
         StringBuffer response = new StringBuffer();
         int responseCode = 0, counter = 0;
         String group_id = "", label = "", phone = "", primary_phone = "", create_account_phone_payload = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(Account.accountID.toString())) {
             account_id = Account.accountID.toString(); 
         }
@@ -133,6 +136,9 @@ public class Phone {
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         String[] phone_parts = account_phone_data.trim().split(",");
         for(int x = 0; x < phone_parts.length; x++) {
             if(x == 0) {
@@ -210,6 +216,9 @@ public class Phone {
         int counter = 0;
         StringBuffer response = null;
         String id = "", label = "", phone = "", primary_phone = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }
@@ -277,6 +286,9 @@ public class Phone {
         int counter = 0;
         StringBuffer response = null;
         String id = "";
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
         }

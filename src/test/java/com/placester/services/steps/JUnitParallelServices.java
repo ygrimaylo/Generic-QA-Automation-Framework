@@ -170,7 +170,7 @@ import com.placester.web.steps.PlacesterSupport;
 					}
 				});
 				t.start();
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				if(x == rows)
 					t.join();
 				if(flag == 1)

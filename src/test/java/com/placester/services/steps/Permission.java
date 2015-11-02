@@ -30,6 +30,9 @@ public class Permission {
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
         }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/permission/create");
             String line = "";
@@ -104,7 +107,10 @@ public class Permission {
         }
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
-        } 
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             URL url = new URL(baseUrl + "/accounts/v1.5/permission/update");
             String line = "";
@@ -176,7 +182,10 @@ public class Permission {
         }
         if(!"".equals(Group.groupID.toString())) {
             group_id = Group.groupID.toString(); 
-        }   
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
+        }
         try {
             if(read_type.equalsIgnoreCase("account_id")) {
                 url = new URL(baseUrl + "/accounts/v1.5/permission/read?account_id=" + account_id);
@@ -238,6 +247,9 @@ public class Permission {
         String id = "";
         if(!"".equals(AccountType.ID.toString())) {
             id = AccountType.ID.toString(); 
+        }
+        if(baseUrl.contains("8082")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 4) + "8081";
         }
         try {
             url = new URL(baseUrl + "/accounts/v1.5/permission/delete?id[]=" + id);
