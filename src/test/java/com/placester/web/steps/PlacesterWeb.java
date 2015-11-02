@@ -18,7 +18,7 @@ public class PlacesterWeb {
     public static StringBuffer httpBasicAuthenticationPassword = new StringBuffer("welcome");
     public static StringBuffer skipStep = new StringBuffer("");
     
-    @Given("^I login to plaster web site by using username (.*) and password (.*)$")
+    @Given("^I login to placester web site by using username (.*) and password (.*)$")
     public void iLoginToPlacesterWebSite(String username, String password) {
         int timeout = 10;
         //Enter username and password

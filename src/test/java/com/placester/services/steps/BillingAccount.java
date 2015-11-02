@@ -462,6 +462,8 @@ public class BillingAccount {
                 plan_id = billing_coupon_data_parts[x];
             }
         }
+        System.out.print("Code ID: " + code_id + "\n");
+        System.out.print("Plan ID: " + plan_id + "\n");
         try {
             url = new URL(baseUrl + "/billing/v1.5/coupon/read?id[]=" + id);
             String authString = Account.username + ":" + Account.pwd;
